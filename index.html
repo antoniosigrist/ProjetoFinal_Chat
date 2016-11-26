@@ -5,7 +5,7 @@
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form { background: #222; padding: 3px; position: fixed; bottom: 0; width: 100%; }
       form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
       form button { width: 9%; background: rgb(180, 204, 255); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
@@ -15,6 +15,8 @@
   </head>
   <body>
     <ul id="messages"></ul>
+    <a class="nickname" visibility="true"> Insira o seu nickname </a>
+    <input class="nickname2" type="text" visibility="true">
     <form action="">
       <input id="m" autocomplete="off" /><button>Enviar</button>
     </form>
@@ -23,7 +25,7 @@
     <script>
       var socket = io();
       $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
+        socket.emit('chat message', $('.nickname2').val()+' : '+$('#m').val());
         $('#m').val('');
         return false;
       });

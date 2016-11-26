@@ -1,7 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var i = 0;
+
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
@@ -9,14 +9,19 @@ app.get('/', function(req, res){
 	
 	var numeroUsuarios = 0;
 
-io.on('connection', function(socket) {
+io.on('connection', function(socket) { // quando alguem entra na pagina
 
-	var usuarioAdicionado = false;
 
-  console.log("a new member"+i+" came in");
-  i++;
+  console.log("a new member came in"); // Avisa no console que alguem entrou
+
+  socket.on('add user', function () {
+    io.emit('chat message', "Um usuário se conectou");
+      
+    
+  });
+  
   socket.on('chat message', function(msg){
-    io.emit('chat message', "MEMBRO" + i + ": "+ msg );
+    io.emit('chat message', msg ); // Mensagem enviada pelo usario
 
   });
 });
