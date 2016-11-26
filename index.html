@@ -6,18 +6,43 @@
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
       form { background: #222; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(180, 204, 255); border: none; padding: 10px; }
+      form input { border: 0; padding: 15px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(255, 0, 0); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #e2e2e2; }
+      #form2{visibility: hidden;}
+      .row{position:fixed; top: 50%;left: 50%; width:30em;height:18em;margin-top: -9em; /*setto a negative number 1/2 of your height*/margin-left: -15em; /*set to a negative number 1/2 of your width*/border: 1px solid #cccccc;}
+      .col-xs-3{position: center; background-color: #cccccc; text-align: center;}
+      .col-xs-2{position: center; width: 100%}
+      .nickname2{width: 80%;}
+      #btn-setNickname{width: 19%;}
+      .col-xs-4{position: center; }
+      
+    background-color: #f3f3f3;}
+      h2 {font-family: "Comic Sans"; }
+      
+
     </style>
   </head>
   <body>
+
+  <div id="row" class="row" style="visibility:visable">
+    <div class="col-xs-3">
+    <h2  type="text" class="form-control"> Insira o seu nickname </h2>
+    </div>
+    <div class="col-xs-4">
+    <input class="nickname2" type="text">
+    <button id = "btn-setNickname">OK</button> 
+    </div>
+    <!-- <div class = "col-xs-2">    
+    
+    </div> -->
+  </div>
+
+
     <ul id="messages"></ul>
-    <a class="nickname" visibility="true"> Insira o seu nickname </a>
-    <input class="nickname2" type="text" visibility="true">
-    <form action="">
+    <form id="form2" action="">
       <input id="m" autocomplete="off" /><button>Enviar</button>
     </form>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
@@ -32,7 +57,16 @@
       socket.on('chat message', function(msg){
         $('#messages').append($('<li>').text(msg));
       });
-      document.getElementById("")
+    
+      </script>
+      <script>
+
+      document.getElementById("btn-setNickname").onclick = function(){
+       console.log("Escondeu a row");
+        document.getElementById("row").style.visibility = "hidden";
+        
+        document.getElementById("form2").style.visibility = "visible";
+      }
     </script>
   </body>
 </html>
