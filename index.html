@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>Chat Insper</title>
     <style>
+      h1 {text-align: center;color: rgb(255,0,0); visibility: visible;}
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
       form { background: #222; padding: 3px; position: fixed; bottom: 0; width: 100%; }
@@ -13,7 +14,7 @@
       #messages li:nth-child(odd) { background: #e2e2e2; }
       #form2{visibility: hidden;}
       .row{position:fixed; top: 50%;left: 50%; width:30em;height:18em;margin-top: -9em; /*setto a negative number 1/2 of your height*/margin-left: -15em; /*set to a negative number 1/2 of your width*/border: 1px solid #cccccc;}
-      .col-xs-3{position: center; background-color: #cccccc; text-align: center;}
+      .col-xs-3{position: center; background-color: #cccccc; text-align: center; color: rgb(255,0,0);}
       .col-xs-2{position: center; width: 100%}
       .nickname2{width: 80%;}
       #btn-setNickname{width: 19%;}
@@ -22,12 +23,14 @@
     background-color: #f3f3f3;}
       h2 {font-family: "Comic Sans"; }
       
-
     </style>
   </head>
   <body>
 
+    <h1 id = "titulo"> Bem Vindo ao Chat Insper </h1>
+
   <div id="row" class="row" style="visibility:visable">
+
     <div class="col-xs-3">
     <h2  type="text" class="form-control"> Insira o seu nickname </h2>
     </div>
@@ -62,9 +65,9 @@
       <script>
 
       document.getElementById("btn-setNickname").onclick = function(){
-       console.log("Escondeu a row");
+       
         document.getElementById("row").style.visibility = "hidden";
-        
+        document.getElementById("titulo").style.visibility = "hidden";
         document.getElementById("form2").style.visibility = "visible";
       }
     </script>
