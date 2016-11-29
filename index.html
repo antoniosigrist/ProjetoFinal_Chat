@@ -69,10 +69,12 @@
         document.getElementById("titulo2").style.visibility = "visible";
         document.getElementById("form2").style.visibility = "visible";
 
-        socket.emit('add user', "O Usuário " + $('.nickname2').val() + " acabou de entrar");
+        socket.emit('add user', $('.nickname2').val());
       }
       socket.on('add user', function(msg2){
+        
         $('#messages').append($('<li>').text(msg2));
+        
       });
 
 

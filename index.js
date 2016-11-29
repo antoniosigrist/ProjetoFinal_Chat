@@ -14,8 +14,8 @@ io.on('connection', function(socket) { // quando alguem entra na pagina
 
   console.log("a new member came in"); // Avisa no console que alguem entrou
 
-  socket.on('add user', function () {
-    io.emit('chat message', "Um usuário se conectou");
+  socket.on('add user', function (msg) {
+    io.emit('chat message', "O usuário " + msg + " acabou de entrar");
       
     
   });
