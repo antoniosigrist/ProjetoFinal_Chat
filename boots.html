@@ -1,28 +1,38 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 <!doctype html>
 <html>
   <head>
     <title>Chat Insper</title>
     <style>
 
-      h1 {text-align: center;color: rgb(255,0,0); visibility: visible;}
-      h2 {font-family: "Comic Sans"; }
+      /*h1 {text-align: center;color: rgb(255,0,0); visibility: visible;}
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
       form { background: #222; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 17px; width: 90%; margin-right: .5%; }
-      form button { width: 9%;  border: none; padding: 15px; background:#d45757;}
+      form input { border: 0; padding: 15px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(255, 0, 0); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
-      /*#messages li:nth-child(odd) { border-bottom: 2px solid #4d6bff }*/
-      /*#messages li:nth-child(even) { border-bottom: 2px solid #0224d0 }*/
+      #messages li:nth-child(odd) { background: #e2e2e2; }
       #titulo2 {text-align: center; color: rgb(255,0,0);}
       #form2{visibility: hidden;}
-      .row{position:fixed; top: 50%;left: 35%; width:30em;height:18em;margin-top: -9em; border: 1px solid #cccccc;}
-      .col-xs-3{position: center; background-color: #cccccc; text-align: center; color: #0224d0}
+      .row{position:fixed; top: 50%;left: 50%; width:30em;height:18em;margin-top: -9em; margin-left: -15em; border: 1px solid #cccccc;}
+      .col-xs-3{position: center; background-color: #cccccc; text-align: center; color: rgb(255,0,0);}
+      .col-xs-2{position: center; width: 100%}
       .nickname2{width: 80%;}
       #btn-setNickname{width: 19%;}
       .col-xs-4{position: center; }
-     
+      
+    background-color: #f3f3f3;}
+      h2 {font-family: "Comic Sans"; }*/
       
     </style>
   </head>
@@ -31,13 +41,20 @@
     <h1 id = "titulo"> Bem Vindo ao Chat Insper </h1>
 
   <div id="row" class="row" style="visibility:visable">
-    <div class="col-xs-3">
-    <h2  type="text" class="form-control"> Insira o seu nickname </h2>
+    <div class="form-group">
+      <h2 for="usr">Insira o seu Nickname:</h2>
+      <input type="text" class="form-control" id="usr">
     </div>
+    <!-- <div class="col-xs-3">
+    <h2  type="text" class="form-control"> Insira o seu nickname </h2>
+    </div> -->
     <div class="col-xs-4">
     <input class="nickname2" type="text">
     <button id = "btn-setNickname">OK</button> 
     </div>
+    <!-- <div class = "col-xs-2">    
+    
+    </div> -->
   </div>
 
     <h2 id="titulo2" style="visibility:hidden">Chat Insper</h2>
@@ -48,7 +65,6 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-
       var socket = io();
       $('form').submit(function(){
         socket.emit('chat message', $('.nickname2').val()+' : '+$('#m').val());
@@ -68,15 +84,7 @@
         document.getElementById("titulo").style.visibility = "hidden";
         document.getElementById("titulo2").style.visibility = "visible";
         document.getElementById("form2").style.visibility = "visible";
-
-        socket.emit('add user', "O Usuário " + $('.nickname2').val() + " acabou de entrar");
       }
-      socket.on('add user', function(msg2){
-        $('#messages').append($('<li>').text(msg2));
-      });
-
-
-      
     </script>
   </body>
 </html>
