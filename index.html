@@ -78,6 +78,18 @@
         
       });
 
+      window.onbeforeunload = function() {
+        socket.emit('disconnect', $('.nickname2').val());
+
+      }
+
+      socket.on('disconnect', function(msg3){
+        
+        $('#messages').append($('<li>').text(msg3));
+        
+      });
+
+
 
       
     </script>

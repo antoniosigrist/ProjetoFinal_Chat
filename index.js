@@ -19,6 +19,11 @@ io.on('connection', function(socket) { // quando alguem entra na pagina
       
     
   });
+
+  socket.on('disconnect', function (msg) {
+    io.emit('chat message',  msg + " ACABOU DE SAIR");
+
+  });
   
   socket.on('chat message', function(msg){
     io.emit('chat message', msg ); // Mensagem enviada pelo usario
