@@ -8,13 +8,14 @@
       h2 {font-family: "Comic Sans"; }
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
-      form { background: #222; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 17px; width: 90%; margin-right: .5%; }
+      form { background: #d45757; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      ul {background: #fbcece;}
+      form input {  padding: 17px; width: 90%; margin-right: .5%; }
       form button { width: 9%;  border: none; padding: 15px; background:#d45757;}
       #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      /*#messages li:nth-child(odd) { border-bottom: 2px solid #4d6bff }*/
-      /*#messages li:nth-child(even) { border-bottom: 2px solid #0224d0 }*/
+      #messages li { padding: 5px 10px;  }
+      #messages li:nth-child(odd) { border-bottom: 2px solid #FFF }
+      #messages li:nth-child(even) { border-bottom: 2px solid #FFF }
       #titulo2 {text-align: center; color: rgb(255,0,0);}
       #form2{visibility: hidden;}
       .row{position:fixed; top: 50%;left: 35%; width:30em;height:18em;margin-top: -9em; border: 1px solid #cccccc;}
@@ -65,8 +66,8 @@
       document.getElementById("btn-setNickname").onclick = function(){
        
         document.getElementById("row").style.visibility = "hidden";
-        document.getElementById("titulo").style.visibility = "hidden";
-        document.getElementById("titulo2").style.visibility = "visible";
+        //document.getElementById("titulo").style.visibility = "hidden";
+        //document.getElementById("titulo2").style.visibility = "visible";
         document.getElementById("form2").style.visibility = "visible";
 
         socket.emit('add user', $('.nickname2').val());
