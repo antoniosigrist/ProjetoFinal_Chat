@@ -24,7 +24,7 @@ io.on('connection', function(socket) { // quando alguem entra na pagina
 
   socket.on('disconnect', function (msg) {
     numPessoas--;
-    io.emit('chat message',  msg + " ACABOU DE SAIR - Há " + String(numPessoas) + " pessoas online");
+    io.emit('chat message',  "UMA PESSOA ACABOU DE SAIR - Há " + String(numPessoas) + " pessoas online");
 
   });
 

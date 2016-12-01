@@ -70,7 +70,7 @@
         //document.getElementById("titulo2").style.visibility = "visible";
         document.getElementById("form2").style.visibility = "visible";
 
-        socket.emit('add user', $('.nickname2').val());
+        socket.emit('add user', $('.nickname2').val().toUpperCase());
       }
       socket.on('add user', function(msg2){
         
@@ -89,15 +89,6 @@
         
       });
 
-       //function typing(){
-        //socket.emit('typing', $('.nickname2').val());
-      //});
-
-      //socket.on('typing', function(msg4){
-        
-        //$('#messages').append($('<li>').text(msg4));
-        
-      //});
 
       
     </script>
