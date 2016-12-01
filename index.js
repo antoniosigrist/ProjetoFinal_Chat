@@ -1,6 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var numPessoas = 0;
 
 
 app.get('/', function(req, res){
@@ -11,17 +12,24 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket) { // quando alguem entra na pagina
 
+  numPessoas++;
 
-  console.log("a new member came in"); // Avisa no console que alguem entrou
+  console.log("Uma pessoa entrou"); // Avisa no console que alguem entrou
 
   socket.on('add user', function (msg) {
-    io.emit('chat message',  msg + " ACABOU DE ENTRAR");
+    io.emit('chat message',  msg + " ACABOU DE ENTRAR - Há " + String(numPessoas) + " pessoas online");
       
     
   });
 
   socket.on('disconnect', function (msg) {
-    io.emit('chat message',  msg + " ACABOU DE SAIR");
+    numPessoas--;
+    io.emit('chat message',  msg + " ACABOU DE SAIR - Há " + String(numPessoas) + " pessoas online");
+
+  });
+
+  socket.on('typing', function (msg) {
+    io.emit('chat message', msg + " ESTÁ DIGITANDO UMA MENSAGEM...");
 
   });
   
